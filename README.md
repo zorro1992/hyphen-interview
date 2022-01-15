@@ -12,9 +12,7 @@ This repo is created for sharing the hyphen interview test code
 - [ServiceMonitor](#servicemonitor)
 - [Load Testing](#performace-or-load-testing )
 - [Promql and CSV data](#promql-and-csv-data)
-- [Reference](reference)
 - [Link to video tutorial guide created by me for this interview](#video-guide-link)
-- 
 
 ### Overview
 The guide aims towards setuping up services based to hypher group interview requirements.
@@ -33,7 +31,7 @@ Pre-requists :
 
 Setting up kind cluster on macbook 
 - Download my git repo using the command `git clone`
-- Verify kind is installed properly using `kind -version`
+- Verify kind is installed properly using `kind --version`
 - Change your dir `cd <repo-name>`
 - Change dir to helper-scripts folder `cd 01-helper-scripts/kind-macbook`
 - Run the bash script to setup a kind cluster which required for our ingress deployment `bash kind_cluster.sh`
@@ -107,11 +105,6 @@ Accessing monitoring URL
     - You should be able to see `nginx-ingress-custom` which is our ingress service.
 ![Promethues URL](Images/01.png)
 
-### Performace or Load Testing
-
-- Install k6 if not present [Prerqu]
-- Change dir `cd ../05-performace-testing`
-- Run k6 with 10 virtual users `k6 run --vus 10 --duration 30s k6-performace-testing.js `
 #### Performace or Load Testing with shell script
 - Run the script for 200x
 ```
@@ -130,7 +123,18 @@ do
   curl -I localhost/potato
 done
 ```
-### Promql and CSV data
 
-### Reference
+### [Bonus] Performace or Load Testing
+
+- Install k6 if not present [Prerqu]
+- Change dir `cd ../05-performace-testing`
+- Run k6 with 10 virtual users `k6 run --vus 10 --duration 30s k6-performace-testing.js `
+- This might fail because of clusterIP issue. But can be developed further if required.
+
+### [Incomplete] Promql and CSV data
+ * Enable Prometheus `kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090`
+ * Average CPU : http://localhost:9090/api/v1/query?query=sum(rate(nginx_ingress_controller_nginx_process_cpu_seconds_total{}[10m]))
+ * Average Memory : http://localhost:9090/api/v1/query?query=avg(nginx_ingress_controller_nginx_process_resident_memory_bytes{}/ 1000 / 1000)
+ * 
 ### Video guide link
+
