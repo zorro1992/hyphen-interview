@@ -1,0 +1,10 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack
+
+
+kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090
+kubectl port-forward svc/prometheus-kube-prometheus-alertmanager 9093
+kubectl port-forward deployment/prometheus-grafana 3000
+
+kubectl port-forward deployment/ingress-nginx-controller --address 0.0.0.0 8080:80
