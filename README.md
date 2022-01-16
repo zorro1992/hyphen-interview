@@ -5,7 +5,6 @@ This repo is created for sharing the hyphen interview test code
 - [Overview](#overview)
 - [Setup information](#setup-information)
     - [Local macbook](#local-macbook-setup)
-    - [AWS EC2](#aws-ec2-setup)
 - [Ingress deployment](#ingress-deployment)
 - [Echo-http deployment](#echo-http-deployment)
 - [Monitoring setup](#monitoring-setup)
@@ -38,7 +37,6 @@ Setting up kind cluster on macbook
 - After the script finishes (Can take couple of mins) run `kubectl get pods --all-namespaces`
     - You should be to able to see some pods which are related to our K8's cluster
 
-####  AWS EC2 setup
 
 ### Ingress deployment
 - Let's go ahead now and deploy our ingress setup.
