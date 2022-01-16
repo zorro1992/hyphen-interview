@@ -5,7 +5,6 @@ This repo is created for sharing the hyphen interview test code
 - [Overview](#overview)
 - [Setup information](#setup-information)
     - [Local macbook](#local-macbook-setup)
-    - [AWS EC2](#aws-ec2-setup)
 - [Ingress deployment](#ingress-deployment)
 - [Echo-http deployment](#echo-http-deployment)
 - [Monitoring setup](#monitoring-setup)
