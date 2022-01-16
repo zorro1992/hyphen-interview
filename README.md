@@ -16,9 +16,11 @@ This repo is created for sharing the hyphen interview test code
 ### Overview
 The guide aims towards setuping up services based to hypher group interview requirements.
 
+Please do checkout my video link (Which the HR has access) where I have presented the solution following my own guide below.
+
 ### Setup information
 
-I have tested this setup both on macbook os and EC2 instance hence sharing both the guides
+I have tested this setup both on macbook os.
 
 #### Local macbook setup (Pre-requists)
 Pre-requists :
@@ -98,7 +100,7 @@ Accessing monitoring URL
 - Setup servicemonitor `kubectl apply -f servicemonitor.yaml -n ingress-nginx`
 - Validate `kubectl get servicemonitor -n ingress-nginx` and you should be able to see `nginx-ingress-custom ` meaning prometheus now can scrape this metrics also
 - Open promethues URL
-    - Port ward `kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090`
+    - Port ward `kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090 -n ingress-nginx`
     - Open browser and access `localhost:9090`, You should be able to access promethues webUi now
     - You should be able to see `nginx-ingress-custom` which is our ingress service.
 ![Promethues URL](Images/01.png)
@@ -130,9 +132,12 @@ done
 - This might fail because of clusterIP issue. But can be developed further if required.
 
 ### [Incomplete] Promql and CSV data
- * Enable Prometheus `kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090`
+ * Enable Prometheus `kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090 -n ingress-nginx`
  * Average CPU : http://localhost:9090/api/v1/query?query=sum(rate(nginx_ingress_controller_nginx_process_cpu_seconds_total{}[10m]))
  * Average Memory : http://localhost:9090/api/v1/query?query=avg(nginx_ingress_controller_nginx_process_resident_memory_bytes{}/ 1000 / 1000)
  * 
 ### Video guide link
 
+I have created a small video explaing how I have run this following my own guide sharing some thoughts also during the process. 
+
+This way you can also get to know my thinking process. Just a add-on.
