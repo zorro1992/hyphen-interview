@@ -11,6 +11,7 @@ This repo is created for sharing the hyphen interview test code
 - [ServiceMonitor](#servicemonitor)
 - [Load Testing](#performace-or-load-testing )
 - [Promql and CSV data](#promql-and-csv-data)
+- [CI/CD](CI/CD)
 - [Link to video tutorial guide created by me for this interview](#video-guide-link)
 
 ### Overview
@@ -136,6 +137,10 @@ done
  * Average CPU : http://localhost:9090/api/v1/query?query=sum(rate(nginx_ingress_controller_nginx_process_cpu_seconds_total{}[10m]))
  * Average Memory : http://localhost:9090/api/v1/query?query=avg(nginx_ingress_controller_nginx_process_resident_memory_bytes{}/ 1000 / 1000)
  * 
+
+### CI/CD
+- I have enabled github actions to check yamlint
+
 ### Video guide link
 
 I have created a small video explaing how I have run this following my own guide sharing some thoughts also during the process. 
