@@ -17,7 +17,10 @@ jobs:
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
           echo "environment-kubeconfig:" ${KUBECONFIG}
-      - name: Deploy to kindD cluster
+      - name: Deploy hyphen-application
         run: 
           cd 02-ingress-deployment && kubectl apply -f ingress_kind.yaml
-          #cd 03-echo-http-deployment && kubectl apply -f ingress_kind.yaml
+      - run:
+          cd 03-echo-http-deployment && kubectl apply -f hashicorp_http.yaml
+      - run:
+          cd 04-monitoring-setup && kubectl apply -f servicemonitor.yaml
