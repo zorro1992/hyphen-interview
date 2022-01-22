@@ -1,10 +1,11 @@
----
-name: Yaml Lint
-on: pull_request  # yamllint disable-line rule:truthy
+on: pull_request
+name: Validate
 jobs:
-  lintAllTheThings:
+  kubeval:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: yaml-lint
-        uses: ibiqlik/action-yamllint@v3
+    - uses: actions/checkout@master
+    - name: test
+      uses: instrumenta/kubeval-action@master
+      with:
+        files: 02-kuberenetes-deployment/

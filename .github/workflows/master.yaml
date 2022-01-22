@@ -1,0 +1,21 @@
+name: "Create cluster using KinD"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  kind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: engineerd/setup-kind@v0.5.0
+      - name: Deploying
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          echo "current-context:" $(kubectl config current-context)
+          echo "environment-kubeconfig:" ${KUBECONFIG}
+      - name: Deploy to kindD cluster
+        run: 
+          cd 02-ingress-deployment && kubectl apply -f ingress_kind.yaml
+          #cd 03-echo-http-deployment && kubectl apply -f ingress_kind.yaml
