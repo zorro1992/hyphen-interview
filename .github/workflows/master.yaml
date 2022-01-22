@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: engineerd/setup-kind@v0.11.1
+      - uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: "v0.11.1"
       - name: Deploying
         run: |
           kubectl cluster-info
